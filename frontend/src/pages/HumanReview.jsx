@@ -18,13 +18,10 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
   const [imageDataUrl, setImageDataUrl] = useState(null);
   const [imageFormat, setImageFormat] = useState('JPEG');
   const [filename, setFilename] = useState('');
-  const [qrData, setQrData] = useState('');
 
   useEffect(() => {
     const fn = `Screening_Report_${hpvData?.testId || 'CG'}_${Date.now()}.pdf`;
     setFilename(fn);
-    const { data: publicUrlData } = supabase.storage.from('reports').getPublicUrl(fn);
-    setQrData(publicUrlData.publicUrl);
   }, [hpvData]);
 
   useEffect(() => {
@@ -203,6 +200,8 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
 
     finalizePDF();
   };
+
+  const qrData = JSON.stringify({ priority, testId: hpvData?.testId, date: new Date().toISOString() });
 
   return (
     <div className="review-container">
