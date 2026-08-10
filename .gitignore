@@ -8,7 +8,6 @@ __pycache__/
 .DS_Store
 .vite/
 *.log
-models/trained/
 dataset/
 coverage/
 .npm/
