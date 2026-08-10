@@ -20,16 +20,17 @@ export default function Intelligence({ onNext, onCancel, hpvData, aiResult, demo
 
   const hpvPositive = hpvData?.hpvDetected;
   
-  const visionPrediction = aiResult?.prediction || (hpvPositive ? 'Koilocytotic' : 'Superficial-Intermediate');
-  const visionConfidence = aiResult?.confidence ? (aiResult.confidence * 100).toFixed(1) : (hpvPositive ? 89 : 96);
-  const isAbnormalCytology = ['Koilocytotic', 'Dyskeratotic'].includes(visionPrediction);
+  const aiError = aiResult?.error;
+  const visionPrediction = (!aiError && aiResult?.prediction) || (hpvPositive ? 'Koilocytotic' : 'Superficial-Intermediate');
+  const visionConfidence = (!aiError && aiResult?.confidence) ? (aiResult.confidence * 100).toFixed(1) : (hpvPositive ? 89 : 96);
+  const isAbnormalCytology = !aiError && ['Koilocytotic', 'Dyskeratotic'].includes(visionPrediction);
   
   const isHighPriority = hpvPositive && isAbnormalCytology;
   const isModeratePriority = (hpvPositive && !isAbnormalCytology) || (!hpvPositive && isAbnormalCytology);
   
   const finalPriority = isHighPriority ? 'HIGH PRIORITY' : (isModeratePriority ? 'MODERATE' : 'ROUTINE');
 
-  const sortedScores = aiResult?.all_scores 
+  const sortedScores = (!aiError && aiResult?.all_scores) 
     ? Object.entries(aiResult.all_scores).sort((a, b) => b[1] - a[1]).slice(0, 3)
     : [];
 
@@ -54,6 +55,13 @@ export default function Intelligence({ onNext, onCancel, hpvData, aiResult, demo
           </button>
         </div>
       </div>
+
+      {aiError && (
+        <div style={{ background: 'rgba(220,50,50,0.15)', border: '1px solid rgba(220,50,50,0.4)', borderRadius: '8px', padding: '12px 16px', marginBottom: '16px', color: '#ff6b6b', fontSize: '0.9rem' }}>
+          ⚠️ <strong>Vision Engine Unavailable:</strong> The AI cytology model could not be reached. The Vision Engine result below is not from the real model. HPV data and clinical risk engine are still valid.<br/>
+          <span style={{fontSize:'0.75rem', opacity:0.7}}>Error: {aiResult?.detail || 'Unknown error'}</span>
+        </div>
+      )}
 
       <div className="signals-grid">
         <SignalCard 

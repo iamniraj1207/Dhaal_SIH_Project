@@ -43,10 +43,13 @@ export default function AiAnalysis({ onComplete, imageFile, demoScenario, setAiR
             const result = await response.json();
             if (setAiResult) setAiResult(result);
           } else {
-            console.error("API returned error status:", response.status);
+            const errText = await response.text();
+            console.error("API returned error status:", response.status, errText);
+            if (setAiResult) setAiResult({ error: true, status: response.status, detail: errText });
           }
         } catch (error) {
           console.error("Failed to reach Python API:", error);
+          if (setAiResult) setAiResult({ error: true, detail: error.message });
         }
       } else if (demoScenario) {
         // Fallback demo results

@@ -15,25 +15,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL_PATH = "models/trained/cerviguard_mobilevit_sipakmed.onnx"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "trained", "cerviguard_mobilevit_sipakmed.onnx")
 CLASSES = ['Dyskeratotic', 'Koilocytotic', 'Metaplastic', 'Parabasal', 'Superficial-Intermediate']
 
 session = None
-
-@app.on_event("startup")
-async def startup_event():
-    global session
-    if os.path.exists(MODEL_PATH):
-        print(f"Loading ONNX model from {MODEL_PATH}...")
-        try:
-            # Try to use CUDA if available, fallback to CPU
-            providers = ['CUDAExecutionProvider', 'CPUExecutionProvider']
-            session = ort.InferenceSession(MODEL_PATH, providers=providers)
-            print(f"Model loaded successfully with providers: {session.get_providers()}")
-        except Exception as e:
-            print(f"Error loading model: {e}")
-    else:
-        print(f"Warning: Model not found at {MODEL_PATH}")
+if os.path.exists(MODEL_PATH):
+    print(f"Loading ONNX model from {MODEL_PATH}...")
+    try:
+        providers = ['CPUExecutionProvider']
+        session = ort.InferenceSession(MODEL_PATH, providers=providers)
+        print(f"Model loaded successfully with providers: {session.get_providers()}")
+    except Exception as e:
+        print(f"Error loading model: {e}")
+else:
+    print(f"Warning: Model not found at {MODEL_PATH}")
 
 def preprocess_image(image_bytes):
     try:
