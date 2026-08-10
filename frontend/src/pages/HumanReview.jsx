@@ -30,10 +30,18 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
         // If it's a path string from demo
         setImageDataUrl(imageFile);
       } else if (imageFile instanceof File) {
-        if (imageFile.type === 'image/png') setImageFormat('PNG');
-        const reader = new FileReader();
-        reader.onload = (e) => setImageDataUrl(e.target.result);
-        reader.readAsDataURL(imageFile);
+        const url = URL.createObjectURL(imageFile);
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          setImageDataUrl(canvas.toDataURL('image/jpeg', 0.9));
+          setImageFormat('JPEG');
+        };
+        img.src = url;
       }
     }
   }, [imageFile]);
