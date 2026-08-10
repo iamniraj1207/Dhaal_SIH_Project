@@ -38,31 +38,12 @@ export default function Dashboard({ onStartScreening, session }) {
       <header className="hero fade-in-scale">
         <div className="hero-content">
           <h1 className="hero-title">{t('app_title').split('—')[0]}</h1>
-          <p className="hero-subtitle">{t('app_title').split('—')[1] || 'AI-Assisted Cervical Screening & Clinical Triage'}</p>
-          <p className="hero-description">
-            A point-of-care decision-support workflow designed to help frontline healthcare workers identify cases requiring further clinical review.
-          </p>
+          <p className="hero-subtitle">{t('app_subtitle')}</p>
+          <p className="hero-description">{t('app_desc')}</p>
           <div className="cta-group" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <Button variant="accent" className="start-cta" onClick={onStartScreening}>
-              Start New Screening &rarr;
+              {t('start_screening')}
             </Button>
-            <div className="demo-dropdown">
-              <select 
-                className="demo-select" 
-                onChange={(e) => {
-                  if (e.target.value) {
-                    onStartScreening(e.target.value);
-                    e.target.value = "";
-                  }
-                }}
-                style={{ padding: '12px 16px', borderRadius: '4px', border: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)', fontFamily: 'var(--font-body)' }}
-              >
-                <option value="">Load Demo Scenario...</option>
-                <option value="routine">Routine Patient (Low Risk)</option>
-                <option value="high-priority">High Priority (High Risk + Abnormal)</option>
-                <option value="conflicting">Conflicting Signals (High Risk + Normal Image)</option>
-              </select>
-            </div>
           </div>
         </div>
       </header>
@@ -84,34 +65,34 @@ export default function Dashboard({ onStartScreening, session }) {
         {/* Metrics Row */}
         <div className="metrics-row">
           <Card className="metric-stat">
-            <span className="metric-label">Total Screenings</span>
+            <span className="metric-label">{t('total_screenings')}</span>
             <span className="metric-value mono">{totalScreenings}</span>
           </Card>
           <Card className="metric-stat">
-            <span className="metric-label">High Priority</span>
+            <span className="metric-label">{t('high_priority')}</span>
             <span className="metric-value mono warning-text">{highPriority}</span>
           </Card>
           <Card className="metric-stat">
-            <span className="metric-label">Moderate</span>
+            <span className="metric-label">{t('moderate')}</span>
             <span className="metric-value mono">{moderatePriority}</span>
           </Card>
           <Card className="metric-stat">
-            <span className="metric-label">Routine</span>
+            <span className="metric-label">{t('routine')}</span>
             <span className="metric-value mono">{routinePriority}</span>
           </Card>
         </div>
 
         <div className="main-content-grid">
           {/* Recent Sessions */}
-          <Card title="Recent Screening Sessions" className="recent-sessions">
+          <Card title={t('recent_sessions')} className="recent-sessions">
             <table className="sessions-table">
               <thead>
                 <tr>
-                  <th>Session ID</th>
-                  <th>Date</th>
-                  <th>Priority</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th>{t('session_id')}</th>
+                  <th>{t('date')}</th>
+                  <th>{t('priority')}</th>
+                  <th>{t('status')}</th>
+                  <th>{t('action')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -132,7 +113,7 @@ export default function Dashboard({ onStartScreening, session }) {
                     <td>{s.status}</td>
                     <td>
                       {s.report_pdf_url ? (
-                        <a href={s.report_pdf_url} target="_blank" rel="noreferrer" className="text-link" download>Download PDF</a>
+                        <a href={s.report_pdf_url} target="_blank" rel="noreferrer" className="text-link" download>{t('download_pdf')}</a>
                       ) : (
                         <span className="mono-light">N/A</span>
                       )}
@@ -142,7 +123,7 @@ export default function Dashboard({ onStartScreening, session }) {
                 {screenings.length === 0 && (
                   <tr>
                     <td colSpan="5" style={{textAlign: 'center', padding: '24px', color: 'var(--color-text-secondary)'}}>
-                      No previous screenings found.
+                      {t('no_sessions')}
                     </td>
                   </tr>
                 )}
@@ -151,23 +132,23 @@ export default function Dashboard({ onStartScreening, session }) {
           </Card>
 
           {/* System Status */}
-          <Card title="AI System Status" className="system-status">
+          <Card title={t('ai_status')} className="system-status">
             <ul className="status-list">
               <li>
                 <span className="status-dot success"></span>
-                <span>Clinical model: Ready</span>
+                <span>{t('clinical_ready')}</span>
               </li>
               <li>
                 <span className="status-dot success"></span>
-                <span>Vision model: Ready</span>
+                <span>{t('vision_ready')}</span>
               </li>
               <li>
                 <span className="status-dot success"></span>
-                <span>Offline inference: Available</span>
+                <span>{t('offline_avail')}</span>
               </li>
               <li>
                 <span className="status-dot success"></span>
-                <span>PDF engine: Ready</span>
+                <span>{t('pdf_ready')}</span>
               </li>
             </ul>
             <p className="system-note">System readiness indicators. Not a clinical validation.</p>

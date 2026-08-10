@@ -37,23 +37,23 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
       
       <div className="intake-content">
         <div className="intake-header">
-          <h2>Hey Beautiful!</h2>
-          <p>Lets get to know you a little Better.</p>
+          <h2>{t('hey_beautiful')}</h2>
+          <p>{t('lets_get_to_know')}</p>
         </div>
 
         <form onSubmit={(e) => { e.preventDefault(); onNext(formData); }}>
-          <Card title="Clinical Context" className="form-card">
+          <Card title={t('clinical_factors')} className="form-card">
             <div className="form-row">
               <div className="form-group">
                 <label>
-                  Session ID
+                  {t('session_id')}
                   <span className="tooltip" title="Auto-generated unique identifier for this screening session.">ⓘ</span>
                 </label>
                 <input type="text" value={sessionId} readOnly className="mono-input" />
               </div>
               <div className="form-group">
                 <label>
-                  Age
+                  {t('age')}
                   <span className="tooltip" title="Patient's current age.">ⓘ</span>
                 </label>
                 <input 
@@ -66,10 +66,10 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
             </div>
           </Card>
 
-          <Card title="Clinical Factors" className="form-card">
+          <Card title={t('clinical_factors')} className="form-card">
             <div className="form-group">
               <label>
-                Smoking History
+                {t('smoking')}
                 <span className="tooltip" title="Current or former smoking can elevate baseline risk.">ⓘ</span>
               </label>
               <div className="segmented-control">
@@ -89,7 +89,7 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
             <div className="form-row">
               <div className="form-group">
                 <label>
-                  Hormonal Contraceptives
+                  {t('hormonal')}
                   <span className="tooltip" title="History of hormonal contraceptive use.">ⓘ</span>
                 </label>
                 <label className="toggle-switch">
@@ -119,7 +119,7 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
             <div className="form-row">
               <div className="form-group">
                 <label>
-                  IUD Use
+                  {t('iud')}
                   <span className="tooltip" title="History of Intrauterine Device (IUD) use.">ⓘ</span>
                 </label>
                 <label className="toggle-switch">
@@ -148,7 +148,7 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
 
             <div className="form-group">
               <label>
-                STD History
+                {t('std')}
                 <span className="tooltip" title="Previous diagnosis of any Sexually Transmitted Diseases.">ⓘ</span>
               </label>
               <label className="toggle-switch">
@@ -164,7 +164,7 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
 
             <div className="form-group">
               <label>
-                Number of Pregnancies
+                {t('pregnancies')}
                 <span className="tooltip" title="Total number of pregnancies.">ⓘ</span>
               </label>
               <input 
@@ -178,8 +178,8 @@ export default function PatientIntake({ onNext, onCancel, initialData }) {
           </Card>
 
           <div className="form-actions">
-            <Button variant="ghost" onClick={onCancel} type="button">Cancel</Button>
-            <Button variant="primary" type="submit">Next: Cytology Scan &rarr;</Button>
+            <Button variant="ghost" onClick={onCancel} type="button">{t('cancel')}</Button>
+            <Button variant="primary" type="submit">{t('next_scan')}</Button>
           </div>
         </form>
       </div>

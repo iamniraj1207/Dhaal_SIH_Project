@@ -16,6 +16,16 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
   const qrRef = useRef();
   
   const [imageDataUrl, setImageDataUrl] = useState(null);
+  const [imageFormat, setImageFormat] = useState('JPEG');
+  const [filename, setFilename] = useState('');
+  const [qrData, setQrData] = useState('');
+
+  useEffect(() => {
+    const fn = `Screening_Report_${hpvData?.testId || 'CG'}_${Date.now()}.pdf`;
+    setFilename(fn);
+    const { data: publicUrlData } = supabase.storage.from('reports').getPublicUrl(fn);
+    setQrData(publicUrlData.publicUrl);
+  }, [hpvData]);
 
   useEffect(() => {
     if (imageFile) {
@@ -23,6 +33,7 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
         // If it's a path string from demo
         setImageDataUrl(imageFile);
       } else if (imageFile instanceof File) {
+        if (imageFile.type === 'image/png') setImageFormat('PNG');
         const reader = new FileReader();
         reader.onload = (e) => setImageDataUrl(e.target.result);
         reader.readAsDataURL(imageFile);
@@ -132,7 +143,7 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
     // Embed Image if possible
     if (imageDataUrl && yPos < 220) {
       try {
-        doc.addImage(imageDataUrl, 'JPEG', 20, yPos, 60, 60);
+        doc.addImage(imageDataUrl, imageFormat, 20, yPos, 60, 60);
       } catch (e) {
         console.error("Could not add image to PDF", e);
       }
@@ -140,7 +151,6 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
 
     // Embed QR Code and Save
     const finalizePDF = async () => {
-      const filename = `Screening_Report_${hpvData?.testId || 'CG'}_${Date.now()}.pdf`;
       const saveAndUpload = async () => {
         // 1. Download to local
         doc.save(filename);
@@ -193,8 +203,6 @@ export default function HumanReview({ onComplete, onRestart, hpvData, patientDat
 
     finalizePDF();
   };
-
-  const qrData = JSON.stringify({ priority, testId: hpvData?.testId, date: new Date().toISOString() });
 
   return (
     <div className="review-container">

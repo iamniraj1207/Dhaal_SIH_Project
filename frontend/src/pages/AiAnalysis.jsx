@@ -33,7 +33,8 @@ export default function AiAnalysis({ onComplete, imageFile, demoScenario, setAiR
           const formData = new FormData();
           formData.append('file', imageFile);
           
-          const response = await fetch('http://localhost:8000/predict', {
+          const apiUrl = import.meta.env.PROD ? '/api/predict' : 'http://localhost:8000/predict';
+          const response = await fetch(apiUrl, {
             method: 'POST',
             body: formData,
           });
