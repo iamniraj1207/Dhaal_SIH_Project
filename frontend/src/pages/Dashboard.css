@@ -1,0 +1,152 @@
+.dashboard-container {
+  padding: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 600px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.start-cta {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.value-strip {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 16px 32px;
+  border-radius: 8px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.convergence-mini {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  animation: drawIn 600ms ease-out;
+}
+
+@keyframes drawIn {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.metric-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.warning-text {
+  color: var(--color-danger);
+}
+
+.main-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+.sessions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sessions-table th, .sessions-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sessions-table th {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mono-light {
+  font-family: var(--font-data);
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.text-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 500;
+}
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.status-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.status-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: var(--color-text-primary);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.status-dot.success { background-color: var(--color-success); }
+
+.system-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 24px;
+}

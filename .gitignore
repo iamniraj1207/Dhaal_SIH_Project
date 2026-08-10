@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.env
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.vite/
+*.log
+models/trained/
+dataset/
+coverage/
+.npm/
+data/

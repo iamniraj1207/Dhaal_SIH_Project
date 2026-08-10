@@ -1,0 +1,138 @@
+.upload-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.upload-header {
+  margin-bottom: 32px;
+}
+
+.upload-header h2 {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.upload-header p {
+  color: var(--color-text-secondary);
+}
+
+.upload-card {
+  margin-bottom: 24px;
+}
+
+.upload-zone {
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--color-surface);
+  transition: all 150ms ease-out;
+}
+
+.upload-zone:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(14, 92, 83, 0.02);
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.upload-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.upload-subtext {
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.upload-limits {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.fade-in-scale {
+  animation: fadeInScale 200ms ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.upload-preview-container {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.preview-image-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-details {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-info h4 {
+  margin: 0 0 8px 0;
+  color: var(--color-text-primary);
+  font-size: 16px;
+}
+
+.preview-info p {
+  margin: 0 0 12px 0;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 6px;
+  margin-top: 24px;
+  border-left: 4px solid transparent;
+}
+
+.warning-alert {
+  background-color: rgba(184, 132, 42, 0.05);
+  border-left-color: var(--color-warning);
+}
+
+.alert-icon {
+  color: var(--color-warning);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.alert p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 14px;
+}

@@ -1,0 +1,11 @@
+{
+  "app_title": "Dhaal — Cervical Screening",
+  "triage_high": "HIGH PRIORITY — REFERRAL REQUIRED",
+  "triage_mod": "MODERATE PRIORITY — MONITOR",
+  "triage_low": "ROUTINE / LOW RISK",
+  "patient_intake": "Patient Health Details",
+  "upload_prompt": "Upload Cytology Image Scan",
+  "ground_truth": "Ground Truth Comparison",
+  "download_pdf": "Download Fast Report PDF",
+  "qr_code_label": "Patient Offline Verification QR"
+}

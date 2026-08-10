@@ -1,0 +1,14 @@
+xgboost
+scikit-learn
+imbalanced-learn
+torch
+transformers
+onnx
+onnxruntime
+ucimlrepo
+pandas
+numpy
+fastapi
+uvicorn
+python-multipart
+Pillow

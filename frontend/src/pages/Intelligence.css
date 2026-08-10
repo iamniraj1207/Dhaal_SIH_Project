@@ -1,0 +1,252 @@
+.intelligence-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.intelligence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.intelligence-header h2 {
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.view-toggle {
+  display: flex;
+  background-color: var(--color-surface-sunken);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.toggle-btn {
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.toggle-btn.active {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.signals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.pattern-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.clinical-factors ul,
+.technical-factors ul {
+  margin: 8px 0 0 20px;
+  padding: 0;
+}
+
+.clinical-factors li,
+.technical-factors li {
+  margin-bottom: 4px;
+}
+
+.technical-factors p {
+  margin: 0 0 8px 0;
+}
+
+.explainability-section {
+  margin-bottom: 48px;
+}
+
+.explainability-toggle {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explainability-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.explain-row {
+  display: flex;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-surface-sunken);
+}
+
+.explain-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.explain-label {
+  width: 200px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.explain-text {
+  color: var(--color-text-secondary);
+}
+
+.summary-row .explain-label,
+.summary-row .explain-text {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Triage Reveal (Convergence) */
+.triage-reveal-container {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.convergence-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  height: 40px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.convergence-lines .line {
+  height: 2px;
+  background-color: var(--color-primary);
+  width: 0;
+  opacity: 0;
+  transition: all 500ms ease-out;
+  position: absolute;
+  top: 50%;
+}
+
+.left-line {
+  left: 0;
+}
+
+.right-line {
+  right: 0;
+}
+
+.center-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 300ms ease-out 500ms;
+}
+
+.convergence-lines.animate .left-line {
+  width: calc(50% - 6px);
+  opacity: 1;
+}
+
+.convergence-lines.animate .right-line {
+  width: calc(50% - 6px);
+  opacity: 1;
+}
+
+.convergence-lines.animate .center-node {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.triage-result {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 500ms ease-out 800ms;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.triage-result.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.triage-status {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.large-badge {
+  font-size: 14px !important;
+  padding: 6px 12px !important;
+  margin-bottom: 16px;
+}
+
+.triage-action {
+  font-size: 24px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.triage-details {
+  display: flex;
+  gap: 32px;
+}
+
+.triage-col {
+  flex: 1;
+}
+
+.triage-col h4 {
+  margin: 0 0 12px 0;
+  color: var(--color-text-primary);
+  font-size: 16px;
+}
+
+.triage-col ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-text-secondary);
+}
+
+.triage-col p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}

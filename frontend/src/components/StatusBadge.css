@@ -1,0 +1,35 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  background-color: var(--color-surface-sunken);
+}
+
+.status-icon {
+  font-size: 10px;
+}
+
+.status-success {
+  color: var(--color-success);
+  background-color: rgba(47, 122, 79, 0.1);
+}
+
+.status-warning {
+  color: var(--color-warning);
+  background-color: rgba(184, 132, 42, 0.1);
+}
+
+.status-danger {
+  color: var(--color-danger);
+  background-color: rgba(178, 58, 52, 0.1);
+}
+
+.status-info {
+  color: var(--color-info);
+  background-color: rgba(58, 110, 165, 0.1);
+}

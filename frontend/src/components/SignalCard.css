@@ -1,0 +1,26 @@
+.signal-card {
+  height: 100%;
+}
+
+.signal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.signal-badge {
+  align-self: flex-start;
+  margin-bottom: 16px;
+}
+
+.signal-value {
+  font-size: 48px;
+  color: var(--color-text-primary);
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.signal-details {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+  flex: 1;
+}

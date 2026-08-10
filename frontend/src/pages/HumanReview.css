@@ -1,0 +1,158 @@
+.review-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.review-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.review-header h2 {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.review-card {
+  padding: 32px;
+}
+
+.recommendation-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recommendation-label {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-btn {
+  font-weight: 600;
+}
+
+.modify-form {
+  margin-top: 24px;
+}
+
+.select-input,
+.textarea-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+}
+
+.textarea-input {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.note-field {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-field label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+/* Completion State */
+.complete-content {
+  text-align: center;
+}
+
+.complete-header {
+  margin-bottom: 48px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-success);
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.pulse-once {
+  animation: pulseOnce 300ms ease-out forwards;
+}
+
+@keyframes pulseOnce {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.completion-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto 0;
+  text-align: left;
+  display: inline-block;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.completion-checklist li {
+  margin-bottom: 8px;
+}
+
+.document-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.doc-icon {
+  font-size: 48px;
+}
+
+.doc-info h4 {
+  margin: 0 0 4px 0;
+}
+
+.doc-info p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+.doc-caption {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
+}
+
+.complete-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
